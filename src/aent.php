@@ -3,13 +3,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use TheAentMachine\AentApplication;
-use TheAentMachine\AentDockerfile\Command\NewImageEventCommand;
-use TheAentMachine\Command\CannotHandleAddEventCommand;
+use \TheAentMachine\Aent\BuilderAent;
+use \TheAentMachine\AentDockerfile\Event\NewImageEvent;
 
-$application = new AentApplication();
-
-$application->add(new CannotHandleAddEventCommand());
-$application->add(new NewImageEventCommand());
-
+$application = new BuilderAent(new NewImageEvent());
 $application->run();
